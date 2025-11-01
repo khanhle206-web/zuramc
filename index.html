@@ -9,10 +9,44 @@
 
     body {
       font-family: 'Poppins', sans-serif;
-      background: linear-gradient(135deg, #0f0f0f, #1a1a1a);
       color: #fff;
       text-align: center;
       overflow-x: hidden;
+      background: url("https://i.postimg.cc/N28D2VQv/background.gif") center/cover no-repeat fixed;
+      position: relative;
+    }
+
+    /* Nền mờ blur */
+    body::before {
+      content: "";
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: inherit;
+      filter: blur(6px) brightness(0.5);
+      z-index: -2;
+    }
+
+    /* Viền RGB */
+    body::after {
+      content: "";
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      border: 4px solid transparent;
+      border-radius: 25px;
+      background: linear-gradient(90deg, red, orange, yellow, lime, cyan, blue, violet, red);
+      background-size: 400%;
+      -webkit-mask: linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0);
+      -webkit-mask-composite: xor;
+      mask-composite: exclude;
+      animation: rgbFrame 6s linear infinite;
+      z-index: -1;
+    }
+
+    @keyframes rgbFrame {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
     }
 
     .container {
@@ -23,6 +57,7 @@
       min-height: 100vh;
       gap: 20px;
       padding: 40px 0;
+      background-color: rgba(0,0,0,0.6);
     }
 
     h1 {
@@ -60,24 +95,76 @@
       to { transform: translateY(-10px); }
     }
 
-    .info-box {
+    .button-container {
+      margin-top: 25px;
+    }
+
+    button {
+      position: relative;
+      margin: 10px;
+      padding: 14px 28px;
+      background: rgba(0,0,0,0.5);
+      color: #fff;
+      border: 3px solid #00ffff;
+      border-radius: 12px;
+      font-size: 16px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.3s;
+      text-transform: uppercase;
+      z-index: 1;
+    }
+
+    button::before {
+      content: "";
+      position: absolute;
+      top: -3px; left: -3px; right: -3px; bottom: -3px;
+      z-index: -1;
+      border-radius: 12px;
+      background: linear-gradient(90deg, red, orange, yellow, lime, cyan, blue, violet, red);
+      background-size: 400%;
+      animation: rgbBorder 6s linear infinite;
+      opacity: 0.6;
+    }
+
+    @keyframes rgbBorder {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    button:hover {
+      transform: scale(1.08);
+      box-shadow: 0 0 20px #00ffff;
+    }
+
+    .content {
+      display: none;
+      margin-top: 25px;
       width: 80%;
-      max-width: 500px;
+      max-width: 700px;
       background: rgba(255,255,255,0.08);
       border: 2px solid #00ffff;
       border-radius: 15px;
-      padding: 15px 20px;
-      font-size: 1.1em;
-      cursor: pointer;
-      transition: 0.3s;
+      padding: 25px;
+      text-align: left;
+      line-height: 1.8;
+      color: #fff;
+      animation: fadeIn 0.5s ease forwards;
+      box-shadow: 0 0 20px rgba(0,255,255,0.4);
+      max-height: 400px;
+      overflow-y: auto;
     }
 
-    .info-box:hover {
-      background: rgba(0,255,255,0.1);
-      box-shadow: 0 0 15px #00ffff;
-      transform: scale(1.03);
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(15px); }
+      to { opacity: 1; transform: translateY(0); }
     }
 
+    h2 {
+      font-weight: 700;
+      color: #00ffff;
+    }
   </style>
 </head>
 
@@ -88,10 +175,42 @@
 
     <img class="avatar" src="https://i.postimg.cc/5Ht8nTgz/icon.png" alt="Zuramc Logo">
 
-    <div class="info-box">🌐 IP SERVER</div>
-    <div class="info-box">📜 LUẬT SERVER</div>
-    <div class="info-box">💬 LINK DISCORD</div>
-    <div class="info-box">💎 ĐẶC QUYỀN NẠP</div>
+    <div class="button-container">
+      <button onclick="show('ip')">🌐 IP SERVER</button>
+      <button onclick="show('rules')">📜 LUẬT SERVER</button>
+      <button onclick="show('discord')">💬 LINK DISCORD</button>
+      <button onclick="show('donate')">💎 ĐẶC QUYỀN NẠP</button>
+    </div>
+
+    <div id="ip" class="content">
+      <h2>🌐 IP SERVER</h2>
+      <p>Sẽ bổ sung sau.</p>
+    </div>
+
+    <div id="rules" class="content">
+      <h2>📜 LUẬT SERVER</h2>
+      <p>Sẽ bổ sung sau.</p>
+    </div>
+
+    <div id="discord" class="content">
+      <h2>💬 LINK DISCORD</h2>
+      <p>Sẽ bổ sung sau.</p>
+    </div>
+
+    <div id="donate" class="content">
+      <h2>💎 ĐẶC QUYỀN NẠP</h2>
+      <p>Sẽ bổ sung sau.</p>
+    </div>
   </div>
+
+  <script>
+    function show(id) {
+      document.querySelectorAll('.content').forEach(div => {
+        div.style.display = 'none';
+      });
+      const target = document.getElementById(id);
+      target.style.display = 'block';
+    }
+  </script>
 </body>
 </html>
