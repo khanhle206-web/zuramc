@@ -16,7 +16,7 @@
       position: relative;
     }
 
-    /* Nền mờ blur */
+    /* Nền mờ */
     body::before {
       content: "";
       position: fixed;
@@ -27,7 +27,7 @@
       z-index: -2;
     }
 
-    /* Viền RGB */
+    /* Viền RGB quanh toàn trang */
     body::after {
       content: "";
       position: fixed;
@@ -56,7 +56,7 @@
       justify-content: center;
       min-height: 100vh;
       gap: 20px;
-      padding: 40px 0;
+      padding: 40px 20px;
       background-color: rgba(0,0,0,0.6);
     }
 
@@ -96,21 +96,25 @@
     }
 
     .button-container {
-      margin-top: 25px;
+      margin-top: 30px;
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+      align-items: center;
     }
 
     button {
       position: relative;
-      margin: 10px;
-      padding: 14px 28px;
-      background: rgba(0,0,0,0.5);
+      width: 280px;
+      padding: 14px 0;
+      background: rgba(0, 0, 0, 0.5);
       color: #fff;
-      border: 3px solid #00ffff;
-      border-radius: 12px;
-      font-size: 16px;
+      border: 2px solid transparent;
+      border-radius: 10px;
+      font-size: 17px;
       font-weight: 700;
       cursor: pointer;
-      transition: all 0.3s;
+      transition: 0.3s;
       text-transform: uppercase;
       z-index: 1;
     }
@@ -118,12 +122,12 @@
     button::before {
       content: "";
       position: absolute;
-      top: -3px; left: -3px; right: -3px; bottom: -3px;
-      z-index: -1;
-      border-radius: 12px;
+      top: -2px; left: -2px; right: -2px; bottom: -2px;
+      border-radius: 10px;
       background: linear-gradient(90deg, red, orange, yellow, lime, cyan, blue, violet, red);
       background-size: 400%;
       animation: rgbBorder 6s linear infinite;
+      z-index: -1;
       opacity: 0.6;
     }
 
@@ -134,14 +138,15 @@
     }
 
     button:hover {
-      transform: scale(1.08);
+      background: rgba(0,255,255,0.15);
+      transform: scale(1.05);
       box-shadow: 0 0 20px #00ffff;
     }
 
     .content {
       display: none;
       margin-top: 25px;
-      width: 80%;
+      width: 85%;
       max-width: 700px;
       background: rgba(255,255,255,0.08);
       border: 2px solid #00ffff;
