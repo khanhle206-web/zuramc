@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <title>ZURAMC - Minecraft Server</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #0f0f0f, #1a1a1a);
+      color: #fff;
+      text-align: center;
+      overflow-x: hidden;
+    }
+
+    .container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      gap: 20px;
+      padding: 40px 0;
+    }
+
+    h1 {
+      font-size: 3em;
+      background: linear-gradient(90deg, #00ffff, #00ff99, #00ffff);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: rgbText 4s linear infinite;
+    }
+
+    @keyframes rgbText {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    p.subtitle {
+      font-size: 1.2em;
+      color: #b3fff0;
+      text-shadow: 0 0 10px #00ffff;
+    }
+
+    .avatar {
+      width: 160px;
+      height: 160px;
+      border-radius: 50%;
+      border: 3px solid #00ffff;
+      object-fit: cover;
+      box-shadow: 0 0 25px #00ffff;
+      animation: float 3s ease-in-out infinite alternate;
+    }
+
+    @keyframes float {
+      from { transform: translateY(0px); }
+      to { transform: translateY(-10px); }
+    }
+
+    .info-box {
+      width: 80%;
+      max-width: 500px;
+      background: rgba(255,255,255,0.08);
+      border: 2px solid #00ffff;
+      border-radius: 15px;
+      padding: 15px 20px;
+      font-size: 1.1em;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .info-box:hover {
+      background: rgba(0,255,255,0.1);
+      box-shadow: 0 0 15px #00ffff;
+      transform: scale(1.03);
+    }
+
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <h1>ZURAMC</h1>
+    <p class="subtitle">Chào mừng bạn đến với thế giới của Zuramc!</p>
+
+    <img class="avatar" src="https://i.postimg.cc/5Ht8nTgz/icon.png" alt="Zuramc Logo">
+
+    <div class="info-box">🌐 IP SERVER</div>
+    <div class="info-box">📜 LUẬT SERVER</div>
+    <div class="info-box">💬 LINK DISCORD</div>
+    <div class="info-box">💎 ĐẶC QUYỀN NẠP</div>
+  </div>
+</body>
+</html>
